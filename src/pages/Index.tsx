@@ -1,10 +1,47 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState, useEffect } from "react";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("solutions");
+  const [roiData, setRoiData] = useState({ investment: 0, savings: 0, years: 5 });
+  const [roiResult, setRoiResult] = useState(0);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      * {
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%234A7C59" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>'), auto !important;
+      }
+      button, a {
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23357A4A" stroke-width="3"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>'), pointer !important;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
+  const calculateROI = () => {
+    const { investment, savings, years } = roiData;
+    const totalSavings = savings * 12 * years;
+    const roi = ((totalSavings - investment) / investment) * 100;
+    const paybackMonths = investment / savings;
+    setRoiResult(Math.round(roi));
+    return { roi: Math.round(roi), paybackMonths: Math.round(paybackMonths) };
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setSelectedFiles(Array.from(e.target.files));
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -17,13 +54,14 @@ const Index = () => {
               className="h-10 md:h-12"
             />
             <nav className="hidden md:flex items-center gap-8">
-              <a href="#home" className="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
-              <a href="#about" className="text-gray-700 hover:text-primary transition-colors font-medium">About</a>
-              <a href="#solutions" className="text-gray-700 hover:text-primary transition-colors font-medium">Solutions</a>
-              <a href="#contact" className="text-gray-700 hover:text-primary transition-colors font-medium">Contact</a>
+              <a href="#home" className="text-gray-700 hover:text-primary transition-colors font-medium">Главная</a>
+              <a href="#about" className="text-gray-700 hover:text-primary transition-colors font-medium">О нас</a>
+              <a href="#solutions" className="text-gray-700 hover:text-primary transition-colors font-medium">Решения</a>
+              <a href="#roi" className="text-gray-700 hover:text-primary transition-colors font-medium">ROI</a>
+              <a href="#contact" className="text-gray-700 hover:text-primary transition-colors font-medium">Контакты</a>
             </nav>
             <Button className="hidden md:flex bg-primary hover:bg-primary/90">
-              Get in Touch
+              Оставить заявку
             </Button>
             <button className="md:hidden">
               <Icon name="Menu" size={24} className="text-gray-700" />
@@ -45,18 +83,32 @@ const Index = () => {
         
         <div className="relative z-10 container mx-auto px-6 text-center text-white animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Industrial Excellence<br />
-            <span className="text-primary">Made in Italy</span>
+            Быстрая модернизация<br />
+            <span className="text-primary">производственных линий</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
-            Ваш надежный партнер в промышленных решениях. Более 30 лет опыта в инновациях и качестве.
+            Доставка из Италии без задержек • Полное таможенное оформление • Гарантия и сервис
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-8 justify-center mb-8 text-sm md:text-base flex-wrap">
+            <div className="flex items-center gap-2">
+              <Icon name="Zap" size={20} className="text-primary" />
+              <span>Установка за 3-5 дней</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Icon name="Plane" size={20} className="text-primary" />
+              <span>Прямая доставка</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Icon name="ShieldCheck" size={20} className="text-primary" />
+              <span>Гарантия 2 года</span>
+            </div>
+          </div>
+          <div className="flex gap-4 justify-center flex-wrap">
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
               Наши решения
             </Button>
             <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 text-lg px-8">
-              О компании
+              Рассчитать окупаемость
             </Button>
           </div>
         </div>
@@ -161,36 +213,12 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                icon: "Settings",
-                title: "Производственное оборудование",
-                description: "Высокоточное оборудование для различных отраслей промышленности"
-              },
-              {
-                icon: "Cpu",
-                title: "Системы автоматизации",
-                description: "Современные решения для полной автоматизации производства"
-              },
-              {
-                icon: "Wrench",
-                title: "Техническое обслуживание",
-                description: "Комплексный сервис и поддержка на всех этапах эксплуатации"
-              },
-              {
-                icon: "LineChart",
-                title: "Оптимизация процессов",
-                description: "Анализ и улучшение производственных процессов"
-              },
-              {
-                icon: "Shield",
-                title: "Системы безопасности",
-                description: "Промышленные решения для обеспечения безопасности производства"
-              },
-              {
-                icon: "Zap",
-                title: "Энергоэффективность",
-                description: "Снижение энергопотребления и оптимизация ресурсов"
-              }
+              { icon: "Settings", title: "Производственное оборудование", description: "Высокоточное оборудование для различных отраслей промышленности" },
+              { icon: "Cpu", title: "Системы автоматизации", description: "Современные решения для полной автоматизации производства" },
+              { icon: "Wrench", title: "Техническое обслуживание", description: "Комплексный сервис и поддержка на всех этапах эксплуатации" },
+              { icon: "LineChart", title: "Оптимизация процессов", description: "Анализ и улучшение производственных процессов" },
+              { icon: "Shield", title: "Системы безопасности", description: "Промышленные решения для обеспечения безопасности производства" },
+              { icon: "Zap", title: "Энергоэффективность", description: "Снижение энергопотребления и оптимизация ресурсов" }
             ].map((item, index) => (
               <Card 
                 key={index} 
@@ -249,72 +277,437 @@ const Index = () => {
                 Мы работаем с ведущими компаниями в различных отраслях промышленности:
               </p>
               <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle2" size={20} className="text-primary" />
-                  <span>Автомобильная</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle2" size={20} className="text-primary" />
-                  <span>Аэрокосмическая</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle2" size={20} className="text-primary" />
-                  <span>Химическая</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle2" size={20} className="text-primary" />
-                  <span>Пищевая</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle2" size={20} className="text-primary" />
-                  <span>Энергетика</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle2" size={20} className="text-primary" />
-                  <span>Металлургия</span>
-                </div>
+                {["Автомобильная", "Аэрокосмическая", "Химическая", "Пищевая", "Энергетика", "Металлургия"].map((industry, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <Icon name="CheckCircle2" size={20} className="text-primary" />
+                    <span>{industry}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <section id="roi" className="py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary">
+              Калькулятор окупаемости
+            </h2>
+            <p className="text-xl text-gray-600">
+              Рассчитайте срок окупаемости модернизации вашей линии
+            </p>
+          </div>
+
+          <Card className="max-w-3xl mx-auto shadow-xl">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <Label htmlFor="investment">Инвестиции (₽)</Label>
+                  <Input
+                    id="investment"
+                    type="number"
+                    placeholder="5000000"
+                    value={roiData.investment || ''}
+                    onChange={(e) => setRoiData({...roiData, investment: Number(e.target.value)})}
+                    className="mt-2"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="savings">Экономия в месяц (₽)</Label>
+                  <Input
+                    id="savings"
+                    type="number"
+                    placeholder="200000"
+                    value={roiData.savings || ''}
+                    onChange={(e) => setRoiData({...roiData, savings: Number(e.target.value)})}
+                    className="mt-2"
+                  />
+                </div>
+              </div>
+              <div className="mb-6">
+                <Label htmlFor="years">Период расчета (лет)</Label>
+                <Input
+                  id="years"
+                  type="number"
+                  placeholder="5"
+                  value={roiData.years || ''}
+                  onChange={(e) => setRoiData({...roiData, years: Number(e.target.value)})}
+                  className="mt-2"
+                />
+              </div>
+              <Button 
+                onClick={calculateROI} 
+                className="w-full bg-primary hover:bg-primary/90 mb-6"
+              >
+                Рассчитать окупаемость
+              </Button>
+              {roiResult !== 0 && (
+                <div className="bg-primary/10 rounded-lg p-6 grid md:grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-2">{calculateROI().paybackMonths} мес</div>
+                    <div className="text-sm text-gray-600">Срок окупаемости</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-2">{roiResult}%</div>
+                    <div className="text-sm text-gray-600">ROI за {roiData.years} лет</div>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       <section id="contact" className="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary">
-              Свяжитесь с нами
-            </h2>
-            <p className="text-xl text-gray-600 mb-12">
-              Готовы обсудить ваш проект? Наши специалисты всегда готовы помочь.
-            </p>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary">
+                Оформить заявку
+              </h2>
+              <p className="text-xl text-gray-600">
+                Выберите нужную услугу и оставьте заявку
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="p-6 hover:shadow-lg transition-shadow">
+            <Tabs defaultValue="request" className="mb-12">
+              <TabsList className="grid w-full grid-cols-4 mb-8">
+                <TabsTrigger value="request">Заявка на ремонт</TabsTrigger>
+                <TabsTrigger value="maintenance">Обслуживание</TabsTrigger>
+                <TabsTrigger value="parts">Заказ запчастей</TabsTrigger>
+                <TabsTrigger value="technician">Вызов техника</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="request">
+                <Card className="shadow-xl">
+                  <CardHeader>
+                    <CardTitle>Заявка на ремонт оборудования</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <form className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Компания *</Label>
+                          <Input placeholder="ООО Производство" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Контактное лицо *</Label>
+                          <Input placeholder="Иван Иванов" className="mt-2" />
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Телефон *</Label>
+                          <Input placeholder="+7 (999) 123-45-67" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Email *</Label>
+                          <Input type="email" placeholder="email@company.ru" className="mt-2" />
+                        </div>
+                      </div>
+                      <div>
+                        <Label>Тип оборудования *</Label>
+                        <Select>
+                          <SelectTrigger className="mt-2">
+                            <SelectValue placeholder="Выберите тип" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="press">Пресс</SelectItem>
+                            <SelectItem value="cnc">ЧПУ станок</SelectItem>
+                            <SelectItem value="conveyor">Конвейер</SelectItem>
+                            <SelectItem value="hydraulic">Гидравлика</SelectItem>
+                            <SelectItem value="other">Другое</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label>Описание проблемы *</Label>
+                        <Textarea 
+                          placeholder="Подробно опишите неисправность, симптомы, когда возникла проблема..." 
+                          rows={4}
+                          className="mt-2"
+                        />
+                      </div>
+                      <div>
+                        <Label>Загрузить фото/видео (до 5 файлов)</Label>
+                        <div className="mt-2">
+                          <Input
+                            type="file"
+                            multiple
+                            accept="image/*,video/*"
+                            onChange={handleFileChange}
+                            className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-primary file:text-white hover:file:bg-primary/90"
+                          />
+                          {selectedFiles.length > 0 && (
+                            <div className="mt-2 text-sm text-gray-600">
+                              Выбрано файлов: {selectedFiles.length}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div>
+                        <Label>Срочность</Label>
+                        <Select>
+                          <SelectTrigger className="mt-2">
+                            <SelectValue placeholder="Выберите" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="critical">Критическая (линия остановлена)</SelectItem>
+                            <SelectItem value="high">Высокая (в течение 24 часов)</SelectItem>
+                            <SelectItem value="medium">Средняя (в течение недели)</SelectItem>
+                            <SelectItem value="low">Низкая (плановый ремонт)</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        <Icon name="Send" size={18} className="mr-2" />
+                        Отправить заявку
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="maintenance">
+                <Card className="shadow-xl">
+                  <CardHeader>
+                    <CardTitle>Заявка на техническое обслуживание</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <form className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Компания *</Label>
+                          <Input placeholder="ООО Производство" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Контактное лицо *</Label>
+                          <Input placeholder="Иван Иванов" className="mt-2" />
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Телефон *</Label>
+                          <Input placeholder="+7 (999) 123-45-67" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Email *</Label>
+                          <Input type="email" placeholder="email@company.ru" className="mt-2" />
+                        </div>
+                      </div>
+                      <div>
+                        <Label>Тип обслуживания</Label>
+                        <Select>
+                          <SelectTrigger className="mt-2">
+                            <SelectValue placeholder="Выберите" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="planned">Плановое ТО</SelectItem>
+                            <SelectItem value="full">Полное обслуживание</SelectItem>
+                            <SelectItem value="diagnostics">Диагностика</SelectItem>
+                            <SelectItem value="preventive">Профилактика</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label>Количество единиц оборудования</Label>
+                        <Input type="number" placeholder="3" className="mt-2" />
+                      </div>
+                      <div>
+                        <Label>Комментарий</Label>
+                        <Textarea placeholder="Дополнительная информация..." rows={3} className="mt-2" />
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        <Icon name="Send" size={18} className="mr-2" />
+                        Отправить заявку
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="parts">
+                <Card className="shadow-xl">
+                  <CardHeader>
+                    <CardTitle>Заказ запчастей</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <form className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Компания *</Label>
+                          <Input placeholder="ООО Производство" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Контактное лицо *</Label>
+                          <Input placeholder="Иван Иванов" className="mt-2" />
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Телефон *</Label>
+                          <Input placeholder="+7 (999) 123-45-67" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Email *</Label>
+                          <Input type="email" placeholder="email@company.ru" className="mt-2" />
+                        </div>
+                      </div>
+                      <div>
+                        <Label>Артикул или название запчасти *</Label>
+                        <Input placeholder="NPL-4567-H или Гидроцилиндр" className="mt-2" />
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Модель оборудования</Label>
+                          <Input placeholder="NELDEN NPL-450" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Количество</Label>
+                          <Input type="number" placeholder="2" className="mt-2" />
+                        </div>
+                      </div>
+                      <div>
+                        <Label>Описание / комментарий</Label>
+                        <Textarea placeholder="Дополнительные требования, уточнения..." rows={3} className="mt-2" />
+                      </div>
+                      <div>
+                        <Label>Фото запчасти (если есть)</Label>
+                        <Input
+                          type="file"
+                          multiple
+                          accept="image/*"
+                          onChange={handleFileChange}
+                          className="mt-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-primary file:text-white hover:file:bg-primary/90"
+                        />
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        <Icon name="Send" size={18} className="mr-2" />
+                        Отправить запрос
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="technician">
+                <Card className="shadow-xl">
+                  <CardHeader>
+                    <CardTitle>Вызов техника (диагностика на месте)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <form className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Компания *</Label>
+                          <Input placeholder="ООО Производство" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Контактное лицо *</Label>
+                          <Input placeholder="Иван Иванов" className="mt-2" />
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Телефон *</Label>
+                          <Input placeholder="+7 (999) 123-45-67" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Email</Label>
+                          <Input type="email" placeholder="email@company.ru" className="mt-2" />
+                        </div>
+                      </div>
+                      <div>
+                        <Label>Адрес выезда *</Label>
+                        <Input placeholder="г. Москва, ул. Промышленная, д.15" className="mt-2" />
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Желаемая дата визита</Label>
+                          <Input type="date" className="mt-2" />
+                        </div>
+                        <div>
+                          <Label>Удобное время</Label>
+                          <Select>
+                            <SelectTrigger className="mt-2">
+                              <SelectValue placeholder="Выберите" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="morning">Утро (9:00-12:00)</SelectItem>
+                              <SelectItem value="afternoon">День (12:00-15:00)</SelectItem>
+                              <SelectItem value="evening">Вечер (15:00-18:00)</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+                      <div>
+                        <Label>Описание проблемы *</Label>
+                        <Textarea placeholder="Что нужно продиагностировать, какие симптомы наблюдаются..." rows={4} className="mt-2" />
+                      </div>
+                      <div>
+                        <Label>Загрузить фото/видео проблемы</Label>
+                        <Input
+                          type="file"
+                          multiple
+                          accept="image/*,video/*"
+                          onChange={handleFileChange}
+                          className="mt-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-primary file:text-white hover:file:bg-primary/90"
+                        />
+                      </div>
+                      <div className="bg-primary/10 rounded-lg p-4 flex items-start gap-3">
+                        <Icon name="Info" size={20} className="text-primary flex-shrink-0 mt-1" />
+                        <div className="text-sm text-gray-700">
+                          Выезд техника для диагностики — бесплатно при последующем ремонте через нашу компанию
+                        </div>
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        <Icon name="Send" size={18} className="mr-2" />
+                        Вызвать специалиста
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+
+            <div className="bg-secondary/10 rounded-2xl p-8 text-center">
+              <h3 className="text-2xl font-bold mb-4 text-secondary">Экстренная связь 24/7</h3>
+              <p className="text-gray-600 mb-6">Для срочных вопросов и аварийных ситуаций</p>
+              <div className="flex gap-4 justify-center flex-wrap">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Icon name="Phone" size={18} className="mr-2" />
+                  +7 (495) 123-45-67
+                </Button>
+                <Button size="lg" variant="outline">
+                  <Icon name="MessageCircle" size={18} className="mr-2" />
+                  Telegram
+                </Button>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              <Card className="p-6 hover:shadow-lg transition-shadow text-center">
                 <Icon name="Mail" size={32} className="text-primary mx-auto mb-4" />
                 <h3 className="font-bold mb-2">Email</h3>
                 <a href="mailto:info@neldenindustry.it" className="text-primary hover:underline">
                   info@neldenindustry.it
                 </a>
               </Card>
-              <Card className="p-6 hover:shadow-lg transition-shadow">
+              <Card className="p-6 hover:shadow-lg transition-shadow text-center">
                 <Icon name="Phone" size={32} className="text-primary mx-auto mb-4" />
                 <h3 className="font-bold mb-2">Телефон</h3>
                 <a href="tel:+390123456789" className="text-primary hover:underline">
                   +39 012 345 6789
                 </a>
               </Card>
-              <Card className="p-6 hover:shadow-lg transition-shadow">
+              <Card className="p-6 hover:shadow-lg transition-shadow text-center">
                 <Icon name="MapPin" size={32} className="text-primary mx-auto mb-4" />
                 <h3 className="font-bold mb-2">Адрес</h3>
                 <p className="text-gray-600">Италия, Милан</p>
               </Card>
             </div>
-
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
-              Оставить заявку
-              <Icon name="Send" size={18} className="ml-2" />
-            </Button>
           </div>
         </div>
       </section>
