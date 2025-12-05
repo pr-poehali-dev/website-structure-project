@@ -16,10 +16,10 @@ const HeroSection = () => {
           NELDEN
         </h1>
         <p className="text-3xl md:text-4xl mb-8 text-primary font-bold tracking-widest uppercase">
-          Engineering
+          Инженерия
         </p>
         <p className="text-xl md:text-2xl text-gray-100 font-light tracking-wide">
-          Production • Installation • After Sales
+          Производство • Монтаж • Сервис
         </p>
       </div>
     </section>

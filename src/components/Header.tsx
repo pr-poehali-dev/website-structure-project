@@ -9,12 +9,12 @@ const Header = () => {
               alt="NELDEN" 
               className="h-12"
             />
-            <p className="text-xs text-gray-500 mt-1 tracking-wider uppercase">Engineering Solutions</p>
+            <p className="text-xs text-gray-500 mt-1 tracking-wider uppercase">Инженерные Решения</p>
           </div>
           <nav className="hidden md:flex items-center gap-10">
-            <a href="#about" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">About</a>
-            <a href="#solutions" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Solutions</a>
-            <a href="#contact" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Contacts</a>
+            <a href="#about" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">О нас</a>
+            <a href="#solutions" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Решения</a>
+            <a href="#contact" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Контакты</a>
           </nav>
         </div>
       </div>

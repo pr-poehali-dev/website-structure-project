@@ -1,11 +1,13 @@
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ContactForms from "@/components/ContactForms";
 
 const Index = () => {
+  const [hoveredSolution, setHoveredSolution] = useState<number | null>(null);
+
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `
@@ -20,26 +22,50 @@ const Index = () => {
     return () => document.head.removeChild(style);
   }, []);
 
+  const solutions = [
+    {
+      icon: "Factory",
+      title: "Производство линий розлива",
+      description: "Проектирование и изготовление полных автоматизированных линий розлива для различных отраслей промышленности",
+      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/03afb0ae-cd03-430a-884b-1a96597fe078.jpg"
+    },
+    {
+      icon: "Wrench",
+      title: "Монтаж и пуско-наладка",
+      description: "Профессиональная установка оборудования, техническое обслуживание и ввод в эксплуатацию производственных линий",
+      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/b8b54ddc-d302-4303-b119-6928a60e2693.jpg"
+    },
+    {
+      icon: "Package",
+      title: "Поставка запчастей",
+      description: "Оригинальные комплектующие и запасные части для промышленного оборудования с гарантией качества",
+      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/c283fe78-9633-42eb-b771-2da7bf48a1d1.jpg"
+    },
+    {
+      icon: "Settings",
+      title: "Модернизация оборудования",
+      description: "Обновление и улучшение существующих производственных линий для повышения эффективности и производительности",
+      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/af89fdd3-8010-434d-af2f-691ecf699b9e.jpg"
+    },
+    {
+      icon: "Headphones",
+      title: "Послепродажное обслуживание",
+      description: "Круглосуточная техническая поддержка, выезд специалистов и гарантийное обслуживание",
+      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/78e39bcc-222c-4149-8546-6043d8283444.jpg"
+    },
+    {
+      icon: "ClipboardCheck",
+      title: "Инжиниринг и консалтинг",
+      description: "Разработка технических решений, консультации по оптимизации производства и внедрению новых технологий",
+      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/fbad7570-ca08-4e9e-bcee-84b00afcbc6a.jpg"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       
       <HeroSection />
-
-      <section className="py-16 bg-gray-50 border-y border-gray-200">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-8">
-            <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-6">Our Partners</h3>
-          </div>
-          <div className="flex items-center justify-center gap-12 flex-wrap grayscale opacity-60">
-            <div className="text-4xl font-bold text-gray-400">FIAT</div>
-            <div className="text-4xl font-bold text-gray-400">PIRELLI</div>
-            <div className="text-4xl font-bold text-gray-400">LUXOTTICA</div>
-            <div className="text-4xl font-bold text-gray-400">FERRARI</div>
-            <div className="text-4xl font-bold text-gray-400">PRADA</div>
-          </div>
-        </div>
-      </section>
 
       <section id="about" className="py-32 bg-white">
         <div className="container mx-auto px-6">
@@ -54,24 +80,24 @@ const Index = () => {
 
             <div>
               <h2 className="text-6xl md:text-7xl font-bold mb-10 text-secondary leading-tight">
-                Engineering Excellence
+                Инженерное превосходство
               </h2>
               <p className="text-2xl text-gray-700 mb-8 leading-relaxed font-light">
-                Dal 1990, Nelden Engineering è leader nella produzione di macchinari industriali.
+                С 1990 года Nelden Engineering — лидер в производстве промышленного оборудования для линий розлива.
               </p>
               
               <div className="grid grid-cols-3 gap-10 mb-12">
                 <div>
                   <div className="text-6xl font-bold text-primary mb-3">30+</div>
-                  <div className="text-base text-gray-600 uppercase tracking-wider">Years</div>
+                  <div className="text-base text-gray-600 uppercase tracking-wider">Лет</div>
                 </div>
                 <div>
                   <div className="text-6xl font-bold text-primary mb-3">500+</div>
-                  <div className="text-base text-gray-600 uppercase tracking-wider">Projects</div>
+                  <div className="text-base text-gray-600 uppercase tracking-wider">Проектов</div>
                 </div>
                 <div>
                   <div className="text-6xl font-bold text-primary mb-3">45</div>
-                  <div className="text-base text-gray-600 uppercase tracking-wider">Countries</div>
+                  <div className="text-base text-gray-600 uppercase tracking-wider">Стран</div>
                 </div>
               </div>
             </div>
@@ -79,35 +105,101 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="solutions" className="py-32 bg-gray-50">
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/03afb0ae-cd03-430a-884b-1a96597fe078.jpg"
+                alt="Производство"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/b8b54ddc-d302-4303-b119-6928a60e2693.jpg"
+                alt="Сервис"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/af89fdd3-8010-434d-af2f-691ecf699b9e.jpg"
+                alt="Завод"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solutions" className="py-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
-            <h2 className="text-6xl md:text-7xl font-bold mb-4 text-secondary">
-              Solutions
+            <h2 className="text-6xl md:text-7xl font-bold mb-6 text-secondary">
+              Наши решения
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Полный спектр инженерных услуг от проектирования до послепродажного обслуживания
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              { icon: "Settings", title: "Production" },
-              { icon: "Wrench", title: "Installation" },
-              { icon: "Headphones", title: "After Sales" }
-            ].map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {solutions.map((item, index) => (
               <Card 
                 key={index} 
-                className="p-12 hover:shadow-xl transition-all duration-300 bg-white border border-gray-200"
+                className="group relative overflow-hidden cursor-pointer border-2 border-gray-100 hover:border-primary transition-all duration-500 h-[420px]"
+                onMouseEnter={() => setHoveredSolution(index)}
+                onMouseLeave={() => setHoveredSolution(null)}
               >
-                <div className="w-24 h-24 bg-primary/10 rounded-lg flex items-center justify-center mb-8">
-                  <Icon name={item.icon} size={48} className="text-primary" />
+                <div className="absolute inset-0 transition-transform duration-500 ease-out"
+                  style={{
+                    transform: hoveredSolution === index ? 'scale(1.1)' : 'scale(1)'
+                  }}
+                >
+                  <img 
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
                 </div>
-                <h3 className="text-3xl font-bold text-secondary">{item.title}</h3>
+
+                <div className="relative h-full flex flex-col justify-end p-8 text-white">
+                  <div 
+                    className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6 transition-all duration-500"
+                    style={{
+                      transform: hoveredSolution === index ? 'scale(1.2) rotate(5deg)' : 'scale(1) rotate(0deg)'
+                    }}
+                  >
+                    <Icon name={item.icon} size={32} className="text-white" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold mb-3 transition-all duration-300"
+                    style={{
+                      transform: hoveredSolution === index ? 'translateY(-8px)' : 'translateY(0)'
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  
+                  <div 
+                    className="overflow-hidden transition-all duration-500 ease-out"
+                    style={{
+                      maxHeight: hoveredSolution === index ? '200px' : '0px',
+                      opacity: hoveredSolution === index ? 1 : 0
+                    }}
+                  >
+                    <p className="text-gray-200 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
               </Card>
             ))}
           </div>
         </div>
       </section>
-
-
 
       <ContactForms />
 
@@ -119,7 +211,7 @@ const Index = () => {
             className="h-10 mb-8 brightness-0 invert mx-auto"
           />
           <p className="text-gray-400 text-sm">
-            © 2024 Nelden Industry. All rights reserved.
+            © 2024 Nelden Industry. Все права защищены.
           </p>
         </div>
       </footer>

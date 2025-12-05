@@ -7,7 +7,7 @@ const ContactForms = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold mb-12 text-secondary">
-            Contatti
+            Контакты
           </h2>
 
           <div className="grid md:grid-cols-3 gap-10 mt-16">
@@ -15,7 +15,7 @@ const ContactForms = () => {
               <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Icon name="Phone" size={32} className="text-primary" />
               </div>
-              <h3 className="font-bold mb-3 text-xl">Telefono</h3>
+              <h3 className="font-bold mb-3 text-xl">Телефон</h3>
               <a href="tel:+390123456789" className="text-primary hover:underline text-lg">
                 +39 012 345 6789
               </a>
@@ -25,7 +25,7 @@ const ContactForms = () => {
               <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Icon name="Mail" size={32} className="text-primary" />
               </div>
-              <h3 className="font-bold mb-3 text-xl">Email</h3>
+              <h3 className="font-bold mb-3 text-xl">Электронная почта</h3>
               <a href="mailto:info@neldenindustry.it" className="text-primary hover:underline break-all">
                 info@neldenindustry.it
               </a>
@@ -35,8 +35,8 @@ const ContactForms = () => {
               <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Icon name="MapPin" size={32} className="text-primary" />
               </div>
-              <h3 className="font-bold mb-3 text-xl">Indirizzo</h3>
-              <p className="text-gray-600">Milano, Italia</p>
+              <h3 className="font-bold mb-3 text-xl">Адрес</h3>
+              <p className="text-gray-600">Милан, Италия</p>
             </Card>
           </div>
         </div>
