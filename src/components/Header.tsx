@@ -11,9 +11,13 @@ const Header = () => {
             />
             <p className="text-xs text-gray-500 mt-1 tracking-wider uppercase">Инженерные Решения</p>
           </div>
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8">
             <a href="#about" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">О нас</a>
             <a href="#solutions" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Решения</a>
+            <a href="#delivery" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Доставка</a>
+            <a href="#customs" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Таможня</a>
+            <a href="#warranty" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Гарантия</a>
+            <a href="#reputation" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Репутация</a>
             <a href="#contact" className="text-gray-700 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Контакты</a>
           </nav>
         </div>
