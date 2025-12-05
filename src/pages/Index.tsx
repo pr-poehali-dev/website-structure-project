@@ -83,9 +83,7 @@ const Index = () => {
               <h2 className="text-6xl md:text-7xl font-bold mb-10 text-secondary leading-tight">
                 Инженерное превосходство
               </h2>
-              <p className="text-2xl text-gray-700 mb-8 leading-relaxed font-light">
-                С 1990 года Nelden Engineering — лидер в производстве промышленного оборудования для линий розлива. Мы специализируемся на поставках итальянского оборудования высочайшего качества на российский рынок.
-              </p>
+              <p className="text-2xl text-gray-700 mb-8 leading-relaxed font-light">С 1990 года Nelden  — ваш партнер в производстве промышленного оборудования для линий розлива. Мы специализируемся на поставках итальянского оборудования высочайшего качества на российский рынок.</p>
               
               <div className="grid grid-cols-3 gap-10 mb-12">
                 <div>
