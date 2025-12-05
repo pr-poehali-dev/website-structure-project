@@ -15,9 +15,7 @@ const HeroSection = () => {
         <h1 className="text-7xl md:text-9xl font-bold mb-6 leading-tight tracking-tight">
           NELDEN
         </h1>
-        <p className="text-3xl md:text-4xl mb-8 text-primary font-bold tracking-widest uppercase">
-          Инженерия
-        </p>
+        <p className="text-3xl md:text-4xl mb-8 text-primary font-bold tracking-widest uppercase">engineering</p>
         <p className="text-xl md:text-2xl text-gray-100 font-light tracking-wide">
           Производство • Монтаж • Сервис
         </p>
