@@ -19,6 +19,10 @@ const ContactForms = () => {
     console.log('Form submitted:', formData);
   };
 
+  const handleTelegramContact = () => {
+    window.open('https://t.me/nelden_support_bot', '_blank');
+  };
+
   return (
     <section id="contact" className="py-32 bg-white">
       <div className="container mx-auto px-6">
@@ -38,27 +42,18 @@ const ContactForms = () => {
             <div className="space-y-6 mb-12">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon name="Phone" size={24} className="text-primary" />
+                  <Icon name="Send" size={24} className="text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-bold mb-2">Телефон</h4>
-                  <a href="tel:+74951234567" className="text-primary hover:underline text-lg">
-                    +7 (495) 123-45-67
-                  </a>
-                  <p className="text-gray-600 text-sm mt-1">Москва, Россия</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon name="Phone" size={24} className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold mb-2">Телефон (Италия)</h4>
-                  <a href="tel:+390123456789" className="text-primary hover:underline text-lg">
-                    +39 012 345 6789
-                  </a>
-                  <p className="text-gray-600 text-sm mt-1">Милан, Италия</p>
+                <div className="flex-1">
+                  <h4 className="font-bold mb-2">Telegram</h4>
+                  <Button 
+                    onClick={handleTelegramContact}
+                    className="bg-primary hover:bg-primary/90 text-white"
+                  >
+                    <Icon name="MessageCircle" size={18} className="mr-2" />
+                    Написать в Telegram
+                  </Button>
+                  <p className="text-gray-600 text-sm mt-2">Быстрая связь с нашими специалистами</p>
                 </div>
               </div>
 
@@ -68,8 +63,8 @@ const ContactForms = () => {
                 </div>
                 <div>
                   <h4 className="font-bold mb-2">Электронная почта</h4>
-                  <a href="mailto:info@neldenindustry.ru" className="text-primary hover:underline break-all">
-                    info@neldenindustry.ru
+                  <a href="mailto:nelden@internet.ru" className="text-primary hover:underline break-all text-lg">
+                    nelden@internet.ru
                   </a>
                   <p className="text-gray-600 text-sm mt-1">Ответим в течение 2 часов</p>
                 </div>
@@ -77,12 +72,34 @@ const ContactForms = () => {
 
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon name="MapPin" size={24} className="text-primary" />
+                  <Icon name="Globe" size={24} className="text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-2">Офисы</h4>
-                  <p className="text-gray-700 mb-1">Россия: Москва, ул. Промышленная, 15</p>
-                  <p className="text-gray-700">Италия: Milano, Via Industriale, 42</p>
+                  <h4 className="font-bold mb-2">Головной офис (Италия)</h4>
+                  <a 
+                    href="https://www.neldenindustry.it/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline text-lg"
+                  >
+                    www.neldenindustry.it
+                  </a>
+                  <p className="text-gray-600 text-sm mt-1">Milano, Italia</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="Building2" size={24} className="text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-bold mb-2">Юридическая информация</h4>
+                  <p className="text-gray-700 font-semibold mb-2">ООО «НЕЛДЕН ИНЖИНИРИНГ»</p>
+                  <p className="text-gray-600 text-sm mb-1">
+                    125252, г. Москва, вн.тер.г. муниципальный округ Хорошевский, проезд Берёзовой Рощи, д. 12, кв. 689
+                  </p>
+                  <p className="text-gray-600 text-sm">ИНН: 9714073547</p>
+                  <p className="text-gray-600 text-sm">КПП: 771401001</p>
                 </div>
               </div>
 
@@ -93,7 +110,7 @@ const ContactForms = () => {
                 <div>
                   <h4 className="font-bold mb-2">Режим работы</h4>
                   <p className="text-gray-700">Пн-Пт: 9:00 - 18:00 (МСК)</p>
-                  <p className="text-gray-600 text-sm mt-1">Техподдержка 24/7</p>
+                  <p className="text-gray-600 text-sm mt-1">Техподдержка 24/7 через Telegram</p>
                 </div>
               </div>
             </div>

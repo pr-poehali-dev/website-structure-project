@@ -682,24 +682,27 @@ const Index = () => {
               <h4 className="font-bold mb-4 text-lg">Контакты</h4>
               <ul className="space-y-3 text-gray-400 text-sm">
                 <li className="flex items-center gap-2">
-                  <Icon name="Phone" size={16} />
-                  <span>+7 (495) 123-45-67</span>
+                  <Icon name="Send" size={16} />
+                  <a href="https://t.me/nelden_support_bot" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Telegram</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="Mail" size={16} />
-                  <span>info@neldenindustry.ru</span>
+                  <span>nelden@internet.ru</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Icon name="MapPin" size={16} />
-                  <span>Москва, Россия</span>
+                  <Icon name="Globe" size={16} />
+                  <a href="https://www.neldenindustry.it/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">neldenindustry.it</a>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-700 pt-8 text-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 Nelden Engineering. Все права защищены.
+            <p className="text-gray-400 text-sm mb-3">
+              © 2024 ООО «НЕЛДЕН ИНЖИНИРИНГ». Все права защищены.
+            </p>
+            <p className="text-gray-500 text-xs">
+              ИНН 9714073547 | КПП 771401001 | 125252, г. Москва
             </p>
           </div>
         </div>
