@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
@@ -33,7 +34,7 @@ const Index = () => {
       icon: "Wrench",
       title: "Монтаж и пуско-наладка",
       description: "Профессиональная установка оборудования, техническое обслуживание и ввод в эксплуатацию производственных линий",
-      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/b8b54ddc-d302-4303-b119-6928a60e2693.jpg"
+      image: "https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/6e5f8194-c3e4-463f-ad51-5c59e823f668.jpg"
     },
     {
       icon: "Package",
@@ -136,8 +137,8 @@ const Index = () => {
             </div>
             <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/b8b54ddc-d302-4303-b119-6928a60e2693.jpg"
-                alt="Сервис"
+                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/6e5f8194-c3e4-463f-ad51-5c59e823f668.jpg"
+                alt="Монтаж"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -220,208 +221,226 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="delivery" className="py-32 bg-gray-50">
+      <section id="service" className="py-32 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 text-secondary">
-                Доставка из Италии в Россию
-              </h2>
-              <p className="text-xl text-gray-700 mb-10 leading-relaxed">
-                Мы обеспечиваем полный цикл логистики от завода в Милане до вашего производства. Наш опыт международных перевозок промышленного оборудования гарантирует безопасность и точность сроков.
-              </p>
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-secondary">
+              Полный цикл сервиса
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              От доставки оборудования из Италии до гарантийного обслуживания — мы берем на себя все этапы
+            </p>
+          </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Truck" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Прямые поставки</h3>
-                    <p className="text-gray-600">Работаем напрямую с производителями в Италии, без посредников. Это сокращает сроки и снижает стоимость.</p>
-                  </div>
+          <Tabs defaultValue="delivery" className="max-w-6xl mx-auto">
+            <TabsList className="grid w-full grid-cols-3 mb-12 h-auto">
+              <TabsTrigger value="delivery" className="py-4 text-base">
+                <Icon name="Truck" size={20} className="mr-2" />
+                Доставка
+              </TabsTrigger>
+              <TabsTrigger value="customs" className="py-4 text-base">
+                <Icon name="FileText" size={20} className="mr-2" />
+                Таможня
+              </TabsTrigger>
+              <TabsTrigger value="warranty" className="py-4 text-base">
+                <Icon name="Shield" size={20} className="mr-2" />
+                Гарантия
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="delivery">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/a295a1f9-1616-4e84-b8de-3b9262c66270.jpg"
+                    alt="Международная доставка"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Clock" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Сроки доставки: 14-21 день</h3>
-                    <p className="text-gray-600">Оптимальные маршруты через морские порты Новороссийск, Санкт-Петербург или автотранспортом через Европу.</p>
-                  </div>
-                </div>
+                <div>
+                  <h3 className="text-3xl font-bold mb-6">Доставка из Италии в Россию</h3>
+                  <p className="text-lg text-gray-700 mb-8">
+                    Полный цикл логистики от завода в Милане до вашего производства. Опыт международных перевозок промышленного оборудования.
+                  </p>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Shield" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Страхование грузов</h3>
-                    <p className="text-gray-600">Все грузы застрахованы на полную стоимость. Специальная упаковка для хрупкого оборудования.</p>
-                  </div>
-                </div>
+                  <div className="space-y-5">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Truck" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Прямые поставки</h4>
+                        <p className="text-gray-600 text-sm">Работаем напрямую с производителями без посредников</p>
+                      </div>
+                    </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="MapPin" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Отслеживание в реальном времени</h3>
-                    <p className="text-gray-600">Онлайн-мониторинг местоположения груза на всех этапах транспортировки. Личный менеджер по логистике.</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Clock" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Сроки: 14-21 день</h4>
+                        <p className="text-gray-600 text-sm">Оптимальные маршруты через порты или автотранспортом</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Shield" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Страхование грузов</h4>
+                        <p className="text-gray-600 text-sm">Все грузы застрахованы на полную стоимость</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="MapPin" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Отслеживание в реальном времени</h4>
+                        <p className="text-gray-600 text-sm">Онлайн-мониторинг и личный менеджер по логистике</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </TabsContent>
 
-            <div className="relative h-[700px] rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/a295a1f9-1616-4e84-b8de-3b9262c66270.jpg"
-                alt="Международная доставка"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="customs" className="py-32 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[700px] rounded-lg overflow-hidden shadow-2xl order-2 md:order-1">
-              <img 
-                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/3c53f890-e155-4291-9783-6f12d6f7c366.jpg"
-                alt="Таможенное оформление"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="order-1 md:order-2">
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 text-secondary">
-                Таможенное оформление
-              </h2>
-              <p className="text-xl text-gray-700 mb-10 leading-relaxed">
-                Полное сопровождение процесса растаможивания оборудования. Наши специалисты по ВЭД имеют 15+ лет опыта работы с промышленным оборудованием.
-              </p>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="FileText" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Подготовка документов</h3>
-                    <p className="text-gray-600">Инвойсы, паспорта оборудования, сертификаты соответствия, декларации — мы готовим весь пакет документов.</p>
-                  </div>
+            <TabsContent value="customs">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/3c53f890-e155-4291-9783-6f12d6f7c366.jpg"
+                    alt="Таможенное оформление"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Calculator" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Расчет таможенных платежей</h3>
-                    <p className="text-gray-600">Прозрачный расчет пошлин и НДС. Помогаем выбрать оптимальный код ТН ВЭД для снижения платежей.</p>
-                  </div>
-                </div>
+                <div>
+                  <h3 className="text-3xl font-bold mb-6">Таможенное оформление</h3>
+                  <p className="text-lg text-gray-700 mb-8">
+                    Полное сопровождение процесса растаможивания. Специалисты по ВЭД с опытом 15+ лет.
+                  </p>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="BadgeCheck" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Сертификация в России</h3>
-                    <p className="text-gray-600">Получение деклараций и сертификатов соответствия ГОСТ Р, ТР ТС. Регистрация в Росстандарте.</p>
-                  </div>
-                </div>
+                  <div className="space-y-5">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="FileText" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Подготовка документов</h4>
+                        <p className="text-gray-600 text-sm">Инвойсы, паспорта, сертификаты, декларации</p>
+                      </div>
+                    </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Users" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Личный таможенный брокер</h3>
-                    <p className="text-gray-600">Закрепленный специалист ведет вашу поставку от начала до выпуска груза. Доступен 24/7.</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Calculator" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Расчет платежей</h4>
+                        <p className="text-gray-600 text-sm">Прозрачный расчет пошлин и НДС, оптимизация кода ТН ВЭД</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="BadgeCheck" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Сертификация в России</h4>
+                        <p className="text-gray-600 text-sm">Получение деклараций ГОСТ Р, ТР ТС, регистрация в Росстандарте</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Users" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Личный таможенный брокер</h4>
+                        <p className="text-gray-600 text-sm">Закрепленный специалист ведет поставку от начала до выпуска</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </TabsContent>
 
-      <section id="warranty" className="py-32 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 text-secondary">
-                Гарантия и сервис
-              </h2>
-              <p className="text-xl text-gray-700 mb-10 leading-relaxed">
-                Мы несем полную ответственность за качество поставляемого оборудования. Наша гарантийная программа — одна из самых надежных на рынке промышленного оборудования.
-              </p>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Award" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Гарантия 36 месяцев</h3>
-                    <p className="text-gray-600">Расширенная гарантия на все оборудование итальянского производства. Бесплатное устранение дефектов.</p>
-                  </div>
+            <TabsContent value="warranty">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/9c899e2d-d310-4b40-ae5e-4845d4853ce5.jpg"
+                    alt="Гарантийный сервис"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Phone" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Техподдержка 24/7</h3>
-                    <p className="text-gray-600">Горячая линия технической поддержки работает круглосуточно. Удаленная диагностика и консультации.</p>
-                  </div>
-                </div>
+                <div>
+                  <h3 className="text-3xl font-bold mb-6">Гарантия и сервис</h3>
+                  <p className="text-lg text-gray-700 mb-8">
+                    Полная ответственность за качество поставляемого оборудования. Надежная гарантийная программа.
+                  </p>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Wrench" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Выезд инженера в течение 24 часов</h3>
-                    <p className="text-gray-600">Сервисные центры в Москве, Санкт-Петербурге, Екатеринбурге, Новосибирске. Выезд по всей России.</p>
-                  </div>
-                </div>
+                  <div className="space-y-5">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Award" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Гарантия 36 месяцев</h4>
+                        <p className="text-gray-600 text-sm">Расширенная гарантия на оборудование итальянского производства</p>
+                      </div>
+                    </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="Package" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Склад запчастей в России</h3>
-                    <p className="text-gray-600">2000+ наименований оригинальных запчастей на складе в Москве. Доставка в регионы за 2-3 дня.</p>
-                  </div>
-                </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Phone" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Техподдержка 24/7</h4>
+                        <p className="text-gray-600 text-sm">Горячая линия и удаленная диагностика круглосуточно</p>
+                      </div>
+                    </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="GraduationCap" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Обучение персонала</h3>
-                    <p className="text-gray-600">Бесплатное обучение ваших специалистов работе с оборудованием. Сертификат по окончанию курса.</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Wrench" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Выезд инженера в течение 24 часов</h4>
+                        <p className="text-gray-600 text-sm">Сервисные центры в 4 городах, выезд по всей России</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="Package" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Склад запчастей в России</h4>
+                        <p className="text-gray-600 text-sm">2000+ наименований на складе в Москве</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon name="GraduationCap" size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Обучение персонала</h4>
+                        <p className="text-gray-600 text-sm">Бесплатное обучение с выдачей сертификата</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="relative h-[700px] rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/7a5a020a-392a-4d73-934c-d920d1f4b70f.jpg"
-                alt="Гарантия качества"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
@@ -655,9 +674,9 @@ const Index = () => {
             <div>
               <h4 className="font-bold mb-4 text-lg">Услуги</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#delivery" className="hover:text-white transition-colors">Доставка из Италии</a></li>
-                <li><a href="#customs" className="hover:text-white transition-colors">Таможенное оформление</a></li>
-                <li><a href="#warranty" className="hover:text-white transition-colors">Гарантия и сервис</a></li>
+                <li><a href="#service" className="hover:text-white transition-colors">Доставка из Италии</a></li>
+                <li><a href="#service" className="hover:text-white transition-colors">Таможенное оформление</a></li>
+                <li><a href="#service" className="hover:text-white transition-colors">Гарантия и сервис</a></li>
               </ul>
             </div>
 
