@@ -26,6 +26,21 @@ const Index = () => {
       
       <HeroSection />
 
+      <section className="py-16 bg-gray-50 border-y border-gray-200">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-8">
+            <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-6">Our Partners</h3>
+          </div>
+          <div className="flex items-center justify-center gap-12 flex-wrap grayscale opacity-60">
+            <div className="text-4xl font-bold text-gray-400">FIAT</div>
+            <div className="text-4xl font-bold text-gray-400">PIRELLI</div>
+            <div className="text-4xl font-bold text-gray-400">LUXOTTICA</div>
+            <div className="text-4xl font-bold text-gray-400">FERRARI</div>
+            <div className="text-4xl font-bold text-gray-400">PRADA</div>
+          </div>
+        </div>
+      </section>
+
       <section id="about" className="py-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -39,10 +54,10 @@ const Index = () => {
 
             <div>
               <h2 className="text-6xl md:text-7xl font-bold mb-10 text-secondary leading-tight">
-                Italian Excellence
+                Engineering Excellence
               </h2>
               <p className="text-2xl text-gray-700 mb-8 leading-relaxed font-light">
-                Dal 1990, Nelden Industry è leader nella produzione di macchinari industriali.
+                Dal 1990, Nelden Engineering è leader nella produzione di macchinari industriali.
               </p>
               
               <div className="grid grid-cols-3 gap-10 mb-12">

@@ -12,14 +12,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
       
       <div className="relative z-10 container mx-auto px-6 text-center text-white animate-fade-in">
-        <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tight">
-          NELDEN INDUSTRY
+        <h1 className="text-7xl md:text-9xl font-bold mb-6 leading-tight tracking-tight">
+          NELDEN
         </h1>
-        <p className="text-2xl md:text-3xl mb-4 text-gray-100 font-light tracking-wide">
-          Production, Installation and After Sales
+        <p className="text-3xl md:text-4xl mb-8 text-primary font-bold tracking-widest uppercase">
+          Engineering
         </p>
-        <p className="text-lg md:text-xl text-gray-300 font-light">
-          Производство, монтаж и постпродажное обслуживание
+        <p className="text-xl md:text-2xl text-gray-100 font-light tracking-wide">
+          Production • Installation • After Sales
         </p>
       </div>
     </section>
