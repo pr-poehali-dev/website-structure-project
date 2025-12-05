@@ -8,8 +8,6 @@ import ROICalculator from "@/components/ROICalculator";
 import ContactForms from "@/components/ContactForms";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState("solutions");
-
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `
@@ -30,117 +28,93 @@ const Index = () => {
       
       <HeroSection />
 
-      <section id="about" className="py-24 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary">
-                О компании Nelden
-              </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                С 1990 года компания Nelden Industry является ведущим производителем промышленного оборудования 
-                и решений для крупных предприятий по всему миру.
-              </p>
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Наша миссия — предоставлять инновационные технологии высочайшего качества, 
-                которые помогают нашим клиентам достигать производственного совершенства.
-              </p>
-              
-              <div className="grid grid-cols-3 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">30+</div>
-                  <div className="text-sm text-gray-600">Лет опыта</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">500+</div>
-                  <div className="text-sm text-gray-600">Проектов</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">45</div>
-                  <div className="text-sm text-gray-600">Стран</div>
-                </div>
-              </div>
-
-              <Button className="bg-primary hover:bg-primary/90">
-                Узнать больше
-                <Icon name="ArrowRight" size={18} className="ml-2" />
-              </Button>
-            </div>
-
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl animate-scale-in">
+      <section id="about" className="py-24 bg-white relative overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `url('https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/c0e590fb-d228-4ddd-baeb-84e691a4cd27.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl animate-scale-in">
               <img 
-                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/7a562032-d1f4-45e6-89c6-141bede913a2.jpg"
+                src="https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/fbad7570-ca08-4e9e-bcee-84b00afcbc6a.jpg"
                 alt="Nelden Facility"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+            </div>
+
+            <div className="animate-fade-in">
+              <h2 className="text-5xl md:text-6xl font-bold mb-8 text-secondary">
+                Eccellenza italiana
+              </h2>
+              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                Dal 1990, Nelden Industry è leader nella produzione di macchinari industriali 
+                e soluzioni per grandi imprese in tutto il mondo.
+              </p>
+              <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+                С 1990 года компания Nelden Industry — ведущий производитель промышленного оборудования 
+                и решений для крупных предприятий по всему миру.
+              </p>
+              
+              <div className="grid grid-cols-3 gap-8 mb-10">
+                <div className="text-center">
+                  <div className="text-5xl font-bold text-primary mb-2">30+</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Anni</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-5xl font-bold text-primary mb-2">500+</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Progetti</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-5xl font-bold text-primary mb-2">45</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Paesi</div>
+                </div>
+              </div>
+
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                Scopri di più
+                <Icon name="ArrowRight" size={20} className="ml-2" />
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="solutions" className="py-24 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `url('https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/3e6159cd-9de2-4763-9c19-885811768a21.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary">
-              Наши решения
+      <section id="solutions" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20 animate-fade-in">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-secondary">
+              Le nostre soluzioni
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Комплексные промышленные решения для вашего бизнеса
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Soluzioni industriali complete per la vostra azienda
             </p>
           </div>
 
-          <div className="flex justify-center gap-4 mb-12 flex-wrap">
-            <Button 
-              variant={activeTab === "solutions" ? "default" : "outline"}
-              onClick={() => setActiveTab("solutions")}
-              className={activeTab === "solutions" ? "bg-primary" : ""}
-            >
-              Промышленные решения
-            </Button>
-            <Button 
-              variant={activeTab === "automation" ? "default" : "outline"}
-              onClick={() => setActiveTab("automation")}
-              className={activeTab === "automation" ? "bg-primary" : ""}
-            >
-              Автоматизация
-            </Button>
-            <Button 
-              variant={activeTab === "consulting" ? "default" : "outline"}
-              onClick={() => setActiveTab("consulting")}
-              className={activeTab === "consulting" ? "bg-primary" : ""}
-            >
-              Консалтинг
-            </Button>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {[
-              { icon: "Settings", title: "Производственное оборудование", description: "Высокоточное оборудование для различных отраслей промышленности" },
-              { icon: "Cpu", title: "Системы автоматизации", description: "Современные решения для полной автоматизации производства" },
-              { icon: "Wrench", title: "Техническое обслуживание", description: "Комплексный сервис и поддержка на всех этапах эксплуатации" },
-              { icon: "LineChart", title: "Оптимизация процессов", description: "Анализ и улучшение производственных процессов" },
-              { icon: "Shield", title: "Системы безопасности", description: "Промышленные решения для обеспечения безопасности производства" },
-              { icon: "Zap", title: "Энергоэффективность", description: "Снижение энергопотребления и оптимизация ресурсов" }
+              { icon: "Settings", title: "Macchinari", subtitle: "Оборудование", description: "Высокоточное оборудование для различных отраслей промышленности" },
+              { icon: "Cpu", title: "Automazione", subtitle: "Автоматизация", description: "Современные решения для полной автоматизации производства" },
+              { icon: "Wrench", title: "Manutenzione", subtitle: "Обслуживание", description: "Комплексный сервис и поддержка на всех этапах эксплуатации" },
+              { icon: "LineChart", title: "Ottimizzazione", subtitle: "Оптимизация", description: "Анализ и улучшение производственных процессов" },
+              { icon: "Shield", title: "Sicurezza", subtitle: "Безопасность", description: "Промышленные решения для обеспечения безопасности производства" },
+              { icon: "Zap", title: "Efficienza", subtitle: "Энергоэффективность", description: "Снижение энергопотребления и оптимизация ресурсов" }
             ].map((item, index) => (
               <Card 
                 key={index} 
-                className="p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white border-2 border-gray-100 hover:border-primary/30 animate-fade-in"
+                className="group p-10 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-white border-2 border-gray-100 hover:border-primary animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <Icon name={item.icon} size={32} className="text-primary" />
+                <div className="w-20 h-20 bg-primary/10 group-hover:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110">
+                  <Icon name={item.icon} size={36} className="text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-secondary">{item.title}</h3>
+                <h3 className="text-2xl font-bold mb-2 text-secondary">{item.title}</h3>
+                <p className="text-primary font-medium mb-4">{item.subtitle}</p>
                 <p className="text-gray-600 leading-relaxed">{item.description}</p>
               </Card>
             ))}
@@ -152,7 +126,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `url('https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/78e39bcc-222c-4149-8546-6043d8283444.jpg')`,
+            backgroundImage: `url('https://cdn.poehali.dev/projects/42f7da92-a097-4604-900a-7d024038e321/files/c0e590fb-d228-4ddd-baeb-84e691a4cd27.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             filter: 'blur(4px)'
@@ -160,43 +134,34 @@ const Index = () => {
         />
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Почему выбирают Nelden?
-              </h2>
-              <div className="space-y-6">
-                {[
-                  { icon: "Award", text: "Сертифицированное качество ISO 9001" },
-                  { icon: "Globe", text: "Присутствие в 45 странах мира" },
-                  { icon: "Users", text: "Команда из 200+ специалистов" },
-                  { icon: "TrendingUp", text: "Постоянное развитие и инновации" },
-                  { icon: "Headphones", text: "24/7 техническая поддержка" }
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name={item.icon} size={24} />
-                    </div>
-                    <span className="text-lg">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              Perché scegliere Nelden?
+            </h2>
+            <p className="text-xl text-gray-300">Почему выбирают Nelden?</p>
+          </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 animate-scale-in">
-              <h3 className="text-2xl font-bold mb-6">Наши клиенты</h3>
-              <p className="text-gray-200 mb-6">
-                Мы работаем с ведущими компаниями в различных отраслях промышленности:
-              </p>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                {["Автомобильная", "Аэрокосмическая", "Химическая", "Пищевая", "Энергетика", "Металлургия"].map((industry, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <Icon name="CheckCircle2" size={20} className="text-primary" />
-                    <span>{industry}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { icon: "Award", title: "Qualità", text: "Сертифицированное качество ISO 9001" },
+              { icon: "Globe", title: "Globale", text: "Присутствие в 45 странах мира" },
+              { icon: "Users", title: "Esperienza", text: "Команда из 200+ специалистов" },
+              { icon: "TrendingUp", title: "Innovazione", text: "Постоянное развитие и инновации" },
+              { icon: "Headphones", title: "Supporto 24/7", text: "Техническая поддержка круглосуточно" },
+              { icon: "Truck", title: "Consegna rapida", text: "Доставка из Италии 3-5 дней" }
+            ].map((item, index) => (
+              <Card 
+                key={index} 
+                className="bg-white/10 backdrop-blur-sm border-white/20 p-8 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-4">
+                  <Icon name={item.icon} size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-200">{item.text}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
