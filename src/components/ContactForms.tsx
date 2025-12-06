@@ -94,15 +94,12 @@ const ContactForms = () => {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 md:mb-2 text-sm md:text-base">Юридическая информация</h4>
-                  <p className="text-gray-700 font-semibold mb-1.5 md:mb-2 text-sm md:text-base">ООО «НЕЛДЕН ИНЖИНИРИНГ» 
-Юридический адрес:
-125252, г. Москва, вн.тер.г. муниципальный округ Хорошевский,
-проезд Берёзовой Рощи, д. 12, кб. 689
-ИНН 9714073547
-КПП 771401001</p>
-                  <p className="text-gray-600 text-xs md:text-sm mb-0.5 md:mb-1">125252, г. Москва</p>
-                  <p className="text-gray-600 text-xs md:text-sm">ИНН: 9714073547</p>
-                  <p className="text-gray-600 text-xs md:text-sm">КПП: 771401001</p>
+                  <p className="text-gray-700 font-semibold mb-1.5 md:mb-2 text-sm md:text-base">ООО «НЕЛДЕН ИНЖИНИРИНГ»</p>
+                  <p className="text-gray-600 text-xs md:text-sm mb-1.5 md:mb-2 leading-relaxed">125252, г. Москва, вн.тер.г. муниципальный округ Хорошевский, проезд Берёзовой Рощи, д. 12, каб. 689</p>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-gray-600 text-xs md:text-sm">
+                    <span>ИНН: 9714073547</span>
+                    <span>КПП: 771401001</span>
+                  </div>
                 </div>
               </div>
 
