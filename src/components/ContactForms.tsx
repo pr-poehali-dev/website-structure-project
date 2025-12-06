@@ -24,36 +24,36 @@ const ContactForms = () => {
   };
 
   return (
-    <section id="contact" className="py-32 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-secondary">
+    <section id="contact" className="py-16 md:py-24 lg:py-32 bg-white">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-10 md:mb-12 lg:mb-16">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 text-secondary">
             Свяжитесь с нами
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Оставьте заявку, и наш специалист свяжется с вами в течение 1 часа
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
           <div>
-            <h3 className="text-3xl font-bold mb-8 text-secondary">Контактная информация</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-secondary">Контактная информация</h3>
             
-            <div className="space-y-6 mb-12">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon name="Send" size={24} className="text-primary" />
+            <div className="space-y-5 md:space-y-6 mb-8 md:mb-12">
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="Send" size={20} className="text-primary md:w-6 md:h-6" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold mb-2">Telegram</h4>
+                  <h4 className="font-bold mb-1 md:mb-2 text-sm md:text-base">Telegram</h4>
                   <Button 
                     onClick={handleTelegramContact}
-                    className="bg-primary hover:bg-primary/90 text-white"
+                    className="bg-primary hover:bg-primary/90 text-white text-sm md:text-base py-2 md:py-2.5"
                   >
-                    <Icon name="MessageCircle" size={18} className="mr-2" />
+                    <Icon name="MessageCircle" size={16} className="mr-1.5 md:mr-2 md:w-[18px] md:h-[18px]" />
                     Написать в Telegram
                   </Button>
-                  <p className="text-gray-600 text-sm mt-2">Быстрая связь с нашими специалистами</p>
+                  <p className="text-gray-600 text-xs md:text-sm mt-1.5 md:mt-2">Быстрая связь с нашими специалистами</p>
                 </div>
               </div>
 
@@ -62,11 +62,11 @@ const ContactForms = () => {
                   <Icon name="Mail" size={24} className="text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-2">Электронная почта</h4>
-                  <a href="mailto:nelden@internet.ru" className="text-primary hover:underline break-all text-lg">
+                  <h4 className="font-bold mb-1 md:mb-2 text-sm md:text-base">Электронная почта</h4>
+                  <a href="mailto:nelden@internet.ru" className="text-primary hover:underline break-all text-base md:text-lg">
                     nelden@internet.ru
                   </a>
-                  <p className="text-gray-600 text-sm mt-1">Ответим в течение 2 часов</p>
+                  <p className="text-gray-600 text-xs md:text-sm mt-0.5 md:mt-1">Ответим в течение 2 часов</p>
                 </div>
               </div>
 
@@ -75,16 +75,16 @@ const ContactForms = () => {
                   <Icon name="Globe" size={24} className="text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-2">Головной офис (Италия)</h4>
+                  <h4 className="font-bold mb-1 md:mb-2 text-sm md:text-base">Головной офис (Италия)</h4>
                   <a 
                     href="https://www.neldenindustry.it/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-primary hover:underline text-lg"
+                    className="text-primary hover:underline text-base md:text-lg break-all"
                   >
                     www.neldenindustry.it
                   </a>
-                  <p className="text-gray-600 text-sm mt-1">Milano, Italia</p>
+                  <p className="text-gray-600 text-xs md:text-sm mt-0.5 md:mt-1">Milano, Italia</p>
                 </div>
               </div>
 
@@ -93,11 +93,11 @@ const ContactForms = () => {
                   <Icon name="Building2" size={24} className="text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-2">Юридическая информация</h4>
-                  <p className="text-gray-700 font-semibold mb-2">ООО «НЕЛДЕН ИНЖИНИРИНГ»</p>
-                  <p className="text-gray-600 text-sm mb-1">125252, г. Москва, вн.тер.г. муниципальный округ Хорошевский, проезд Берёзовой Рощи, д. 12, каб. 689</p>
-                  <p className="text-gray-600 text-sm">ИНН: 9714073547</p>
-                  <p className="text-gray-600 text-sm">КПП: 771401001</p>
+                  <h4 className="font-bold mb-1 md:mb-2 text-sm md:text-base">Юридическая информация</h4>
+                  <p className="text-gray-700 font-semibold mb-1.5 md:mb-2 text-sm md:text-base">ООО «НЕЛДЕН ИНЖИНИРИНГ»</p>
+                  <p className="text-gray-600 text-xs md:text-sm mb-0.5 md:mb-1">125252, г. Москва</p>
+                  <p className="text-gray-600 text-xs md:text-sm">ИНН: 9714073547</p>
+                  <p className="text-gray-600 text-xs md:text-sm">КПП: 771401001</p>
                 </div>
               </div>
 
@@ -106,17 +106,17 @@ const ContactForms = () => {
                   <Icon name="Clock" size={24} className="text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-2">Режим работы</h4>
-                  <p className="text-gray-700">Пн-Пт: 9:00 - 18:00 (МСК)</p>
-                  <p className="text-gray-600 text-sm mt-1">Техподдержка 24/7 через Telegram</p>
+                  <h4 className="font-bold mb-1 md:mb-2 text-sm md:text-base">Режим работы</h4>
+                  <p className="text-gray-700 text-sm md:text-base">Пн-Пт: 9:00 - 18:00 (МСК)</p>
+                  <p className="text-gray-600 text-xs md:text-sm mt-0.5 md:mt-1">Техподдержка 24/7 через Telegram</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <Card className="p-8 border-2 border-gray-100">
-            <h3 className="text-2xl font-bold mb-6">Форма обратной связи</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <Card className="p-5 md:p-6 lg:p-8 border-2 border-gray-100">
+            <h3 className="text-xl md:text-2xl font-bold mb-5 md:mb-6">Форма обратной связи</h3>
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 lg:space-y-6">
               <div>
                 <label className="block text-sm font-medium mb-2 text-gray-700">
                   Ваше имя *
@@ -188,7 +188,7 @@ const ContactForms = () => {
 
               <Button 
                 type="submit" 
-                className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-medium"
+                className="w-full bg-primary hover:bg-primary/90 text-white py-4 md:py-5 lg:py-6 text-base md:text-lg font-medium"
               >
                 Отправить заявку
               </Button>
