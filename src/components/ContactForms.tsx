@@ -95,9 +95,7 @@ const ContactForms = () => {
                 <div>
                   <h4 className="font-bold mb-2">Юридическая информация</h4>
                   <p className="text-gray-700 font-semibold mb-2">ООО «НЕЛДЕН ИНЖИНИРИНГ»</p>
-                  <p className="text-gray-600 text-sm mb-1">
-                    125252, г. Москва, вн.тер.г. муниципальный округ Хорошевский, проезд Берёзовой Рощи, д. 12, кв. 689
-                  </p>
+                  <p className="text-gray-600 text-sm mb-1">125252, г. Москва, вн.тер.г. муниципальный округ Хорошевский, проезд Берёзовой Рощи, д. 12, каб. 689</p>
                   <p className="text-gray-600 text-sm">ИНН: 9714073547</p>
                   <p className="text-gray-600 text-sm">КПП: 771401001</p>
                 </div>
